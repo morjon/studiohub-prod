@@ -23,14 +23,14 @@ const Home: NextPage = () => {
             >
               <h3 className="text-2xl font-bold">Github →</h3>
               <div className="text-lg">
-                Currently in development. Check out the Github repo for the
+                Currently in development. Check out our Github repo for the
                 latest.
               </div>
             </Link>
           </div>
           <div className="flex items-center justify-center gap-20 [filter:url(#gooey)]">
-            <div className="animate-movealt h-60 w-60 rounded-full bg-zinc-300 bg-gradient-to-br from-white to-zinc-400 shadow-inner shadow-white"></div>
-            <div className="animate-move h-40 w-40 rounded-full bg-zinc-300 bg-gradient-to-br from-white to-zinc-400 shadow-inner shadow-white"></div>
+            <div className="h-60 w-60 animate-movealt rounded-full bg-zinc-300 bg-gradient-to-br from-white to-zinc-400 shadow-inner shadow-white"></div>
+            <div className="h-40 w-40 animate-move rounded-full bg-zinc-300 bg-gradient-to-br from-white to-zinc-400 shadow-inner shadow-white"></div>
           </div>
           <svg>
             <filter id="gooey">
