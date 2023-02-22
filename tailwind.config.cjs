@@ -5,17 +5,17 @@ module.exports = {
     extend: {
       animation: {
         move: "move 1.5s ease-in-out infinite alternate",
-        movealt: "movealt 1.5s ease-in-out infinite alternate"
+        movealt: "movealt 1.5s ease-in-out infinite alternate",
       },
       keyframes: {
         move: {
           to: {
-            transform: ' translateX(-100%)',
+            transform: " translateX(-80%)",
           },
         },
         movealt: {
           to: {
-            transform: ' translateX(100%)',
+            transform: " translateX(80%)",
           },
         },
       },
