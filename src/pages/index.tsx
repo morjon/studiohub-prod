@@ -1,6 +1,6 @@
 import { type NextPage } from "next";
 import { clsx } from "clsx";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import Head from "next/head";
 import GooeyAnimation from "../components/GooeyAnimation";
 import GithubButton from "../components/GithubButton";
