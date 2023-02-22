@@ -5,7 +5,7 @@ if (!process.env.OPENAI_API_KEY) {
 }
 
 export const config = {
-  runtime: "edge" /* Define API route as an edge function. */,
+  runtime: "edge",
 };
 
 const handler = async (req: Request): Promise<Response> => {

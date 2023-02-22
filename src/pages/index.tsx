@@ -10,6 +10,8 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [generated, setGenerated] = useState<string>("");
 
+  console.log("codeSnippet: ", codeSnippet);
+
   const prompt = `
   I'd like for you to act as a creative, nuanced translator of code. 
   I will send you a snippet of code and it will be your job to analyze, 
@@ -27,7 +29,7 @@ const Home: NextPage = () => {
   ${codeSnippet}
   `;
 
-  const generateEnglish = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const generateEnglish = async (e: any) => {
     e.preventDefault();
     setGenerated("");
     setLoading(true);
@@ -37,7 +39,9 @@ const Home: NextPage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ prompt }),
+      body: JSON.stringify({
+        prompt,
+      }),
     });
     console.log("Edge function returned...");
 
