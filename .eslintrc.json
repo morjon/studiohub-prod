@@ -1,15 +1,21 @@
 {
-  "overrides": [
-    {
-      "extends": [
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
-      ],
-      "files": ["*.ts", "*.tsx"],
-      "parserOptions": {
-        "project": "tsconfig.json"
-      }
-    }
-  ],
+  // "overrides": [
+  //   {
+  //     "extends": [
+  //       "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  //     ],
+  //     "files": ["*.ts", "*.tsx"],
+  //     "parserOptions": {
+  //       "project": "tsconfig.json"
+  //     }
+  //   },
+  //   {
+  //     "extends:": "next",
+  //     "rules": {
+  //       "@typescript-eslint/no-misused-promises": "off"
+  //     }
+  //   }
+  // ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"

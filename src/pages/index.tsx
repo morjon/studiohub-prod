@@ -67,7 +67,7 @@ const Home: NextPage = () => {
         setLoading(false);
       }
     },
-    [codeSnippet]
+    [prompt]
   );
 
   return (
@@ -114,7 +114,7 @@ const Home: NextPage = () => {
                   "tracking-tight subpixel-antialiased"
                 )}
               >
-                Copy a snippet of code you'd like clarified!
+                Copy a snippet of code you want clarified!
               </p>
             </div>
             <textarea
