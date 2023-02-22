@@ -128,11 +128,8 @@ const Home: NextPage = () => {
             ></textarea>
             {!loading && (
               <button
+                className="text-baseline w-full rounded-lg bg-stone-800 px-3 py-2 text-white hover:bg-stone-800/80"
                 onClick={(e) => generateEnglish(e)}
-                className={clsx(
-                  "text-baseline rounded-lg bg-stone-800 px-3 py-2",
-                  "w-full text-white hover:bg-stone-800/80"
-                )}
               >
                 Clarify Code &rarr;
               </button>
