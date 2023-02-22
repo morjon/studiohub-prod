@@ -27,48 +27,42 @@ const Home: NextPage = () => {
   ${codeSnippet}
   `;
 
-  const generateEnglish = useCallback(
-    async (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-      setGenerated("");
-      setLoading(true);
+  const generateEnglish = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setGenerated("");
+    setLoading(true);
 
-      try {
-        const res = await fetch("/api/generate", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ prompt }),
-        });
+    const res = await fetch("/api/generate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt }),
+    });
+    console.log("Edge function returned...");
 
-        if (!res.ok) {
-          throw new Error(res.statusText);
-        }
+    if (!res.ok) {
+      throw new Error(res.statusText);
+    }
 
-        const data = res.body;
-        if (!data) {
-          return;
-        }
+    const data = res.body;
+    if (!data) {
+      return;
+    }
 
-        const reader = data.getReader();
-        const decoder = new TextDecoder();
+    const reader = data.getReader();
+    const decoder = new TextDecoder();
 
-        let done = false;
-        while (!done) {
-          const { value, done: readerDone } = await reader.read();
-          done = readerDone;
-          const chunk = decoder.decode(value);
-          setGenerated((prev) => prev + chunk);
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    },
-    [prompt]
-  );
+    let done = false;
+    while (!done) {
+      const { value, done: readerDone } = await reader.read();
+      done = readerDone;
+      const chunk = decoder.decode(value);
+      setGenerated((prev) => prev + chunk);
+    }
+
+    setLoading(false);
+  };
 
   return (
     <>
