@@ -5,7 +5,7 @@ if (!process.env.OPENAI_API_KEY) {
 }
 
 export const config = {
-  runtime: "edge" /* Define API route as an edge function. */,
+  runtime: "edge",
 };
 
 const handler = async (req: Request): Promise<Response> => {
@@ -18,8 +18,8 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   const payload: OpenAIStreamPayload = {
-    model: "text-davinci-003",
-    prompt,
+    model: "gpt-3.5 turbo",
+    messages: [{ role: "user", content: "prompt"}],
     temperature: 0.4,
     top_p: 1,
     frequency_penalty: 0,

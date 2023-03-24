@@ -4,9 +4,16 @@ import {
   ReconnectInterval,
 } from "eventsource-parser";
 
+export type ModelRole = "user" | "assistant" | "system";
+
+export interface ModelMessage {
+  role: ModelRole;
+  content: string;
+}
+
 export interface OpenAIStreamPayload {
   model: string;
-  prompt: string;
+  messages: ModelMessage[];
   temperature: number;
   top_p: number;
   frequency_penalty: number;
@@ -21,7 +28,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
   const decoder = new TextDecoder();
 
   let count = 0;
-  const res = await fetch("https://api.openai.com/v1/completions", {
+  const res = await fetch("https://api.openai.com/v1/chat/completions", {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
@@ -42,7 +49,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
           }
           try {
             const json = JSON.parse(data);
-            const text = json.choices[0].text;
+            const text = json.choices[0].delta?.content || "";
 
             if (count < 2 && (text.match(/\n/) || []).length) {
               return;
